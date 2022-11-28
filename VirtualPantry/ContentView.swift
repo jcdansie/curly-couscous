@@ -62,7 +62,7 @@ struct ContentView : View {
                     Image(systemName: "list.bullet")
                     Text("Shopping List")
                 }
-            Recipes(allRecipes: $recipes, pantryItems: $pantryItems, selectedRecipe: availableRecipes.count > 0 ? availableRecipes[0] : recipes[0])
+            Recipes(allRecipes: $recipes, pantryItems: $pantryItems)
                 .tabItem() {
                     Image(systemName: "note.text")
                     Text("Recipes")
