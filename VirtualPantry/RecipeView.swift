@@ -60,7 +60,7 @@ struct RecipeView: View {
         Button(action: {
             showUseRecipe = true
         }) {
-            Text("USE RECIPE")
+            Text("USE INGREDIENTS")
         }
         .font(.headline)
         .foregroundColor(.white)

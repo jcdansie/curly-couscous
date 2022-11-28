@@ -45,7 +45,7 @@ struct ShoppingList: View {
             
             if(shoppingItems.count != 0) {
                 Button(action: {showCompleteShopping = true}) {
-                   Text("COMPLETE SHOPPING")
+                   Text("ADD TO PANTRY")
                 }
                 .font(.headline)
                 .foregroundColor(.white)
