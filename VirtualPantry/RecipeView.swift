@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeView: View {
     var selectedRecipe: Recipe
     @Binding var pantryItems: [Item]
+    @State var showUseRecipe: Bool = false;
     
     var body: some View {
         
@@ -57,21 +58,7 @@ struct RecipeView: View {
         }
         
         Button(action: {
-            for item in selectedRecipe.ingredients {
-                var i = 0
-                while i < pantryItems.count {
-                    if pantryItems[i].name == item.name {
-                        print("Quant before: ", pantryItems[i].quantity)
-                        pantryItems[i].quantity = pantryItems[i].quantity - item.quantity
-                        print("Quant after: ", pantryItems[i].quantity)
-                        if pantryItems[i].quantity > 0 {
-                            pantryItems.append(pantryItems[i])
-                        }
-                        pantryItems.remove(at: i)
-                    }
-                    i += 1
-                }
-            }
+            showUseRecipe = true
         }) {
             Text("USE RECIPE")
         }
@@ -81,6 +68,49 @@ struct RecipeView: View {
         .frame(width: 220, height: 60)
         .background(Color.green)
         .cornerRadius(15.0)
+        .popover(isPresented: $showUseRecipe) {
+            
+            Text("Are you sure you want to use this recipe? All ingredients will be removed from your pantry.")
+                .font(.headline)
+                .padding()
+            
+            Button(action: {
+                for item in selectedRecipe.ingredients {
+                    var i = 0
+                    while i < pantryItems.count {
+                        if pantryItems[i].name == item.name {
+                            print("Quant before: ", pantryItems[i].quantity)
+                            pantryItems[i].quantity = pantryItems[i].quantity - item.quantity
+                            print("Quant after: ", pantryItems[i].quantity)
+                            if pantryItems[i].quantity > 0 {
+                                pantryItems.append(pantryItems[i])
+                            }
+                            pantryItems.remove(at: i)
+                        }
+                        i += 1
+                    }
+                }
+                showUseRecipe = false
+            }) {
+                Text("COMPLETE")
+            }
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 220, height: 60)
+            .background(Color.green)
+            .cornerRadius(15.0)
+            
+            Button(action: {showUseRecipe = false}) {
+                Text("CANCEL")
+            }
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 220, height: 60)
+            .background(Color.green)
+            .cornerRadius(15.0)
+        }
     }
 }
 
