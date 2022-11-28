@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct VirtualPantryApp: App {
+    
+    @State var isLoggedIn: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isLoggedIn {
+                ContentView(isLoggedIn: $isLoggedIn)
+            } else {
+                LoginView(isLoggedIn: $isLoggedIn)
+            }
         }
     }
 }

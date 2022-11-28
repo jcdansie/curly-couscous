@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7766447F29143B3C00C2D153 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7766447E29143B3C00C2D153 /* LoginView.swift */; };
+		77664481291456B900C2D153 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77664480291456B900C2D153 /* RegisterView.swift */; };
+		779546A02919F4FE00B5F086 /* Pantry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795469F2919F4FE00B5F086 /* Pantry.swift */; };
+		779546A22919F50800B5F086 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779546A12919F50800B5F086 /* ShoppingList.swift */; };
+		779546A42919F51300B5F086 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779546A32919F51300B5F086 /* Recipes.swift */; };
+		779546A62919F51B00B5F086 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779546A52919F51B00B5F086 /* Profile.swift */; };
 		77E1B8D329142D3800F1CD2C /* VirtualPantryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E1B8D229142D3800F1CD2C /* VirtualPantryApp.swift */; };
 		77E1B8D529142D3800F1CD2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E1B8D429142D3800F1CD2C /* ContentView.swift */; };
 		77E1B8D729142D3A00F1CD2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77E1B8D629142D3A00F1CD2C /* Assets.xcassets */; };
@@ -34,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7766447E29143B3C00C2D153 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		77664480291456B900C2D153 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		7795469F2919F4FE00B5F086 /* Pantry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pantry.swift; sourceTree = "<group>"; };
+		779546A12919F50800B5F086 /* ShoppingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
+		779546A32919F51300B5F086 /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
+		779546A52919F51B00B5F086 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		77E1B8CF29142D3800F1CD2C /* VirtualPantry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualPantry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77E1B8D229142D3800F1CD2C /* VirtualPantryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualPantryApp.swift; sourceTree = "<group>"; };
 		77E1B8D429142D3800F1CD2C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,10 +106,16 @@
 		77E1B8D129142D3800F1CD2C /* VirtualPantry */ = {
 			isa = PBXGroup;
 			children = (
+				7766447E29143B3C00C2D153 /* LoginView.swift */,
 				77E1B8D229142D3800F1CD2C /* VirtualPantryApp.swift */,
 				77E1B8D429142D3800F1CD2C /* ContentView.swift */,
+				7795469F2919F4FE00B5F086 /* Pantry.swift */,
+				779546A12919F50800B5F086 /* ShoppingList.swift */,
+				779546A32919F51300B5F086 /* Recipes.swift */,
+				779546A52919F51B00B5F086 /* Profile.swift */,
 				77E1B8D629142D3A00F1CD2C /* Assets.xcassets */,
 				77E1B8D829142D3A00F1CD2C /* Preview Content */,
+				77664480291456B900C2D153 /* RegisterView.swift */,
 			);
 			path = VirtualPantry;
 			sourceTree = "<group>";
@@ -257,7 +275,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7766447F29143B3C00C2D153 /* LoginView.swift in Sources */,
+				779546A22919F50800B5F086 /* ShoppingList.swift in Sources */,
+				779546A42919F51300B5F086 /* Recipes.swift in Sources */,
+				77664481291456B900C2D153 /* RegisterView.swift in Sources */,
 				77E1B8D529142D3800F1CD2C /* ContentView.swift in Sources */,
+				779546A62919F51B00B5F086 /* Profile.swift in Sources */,
+				779546A02919F4FE00B5F086 /* Pantry.swift in Sources */,
 				77E1B8D329142D3800F1CD2C /* VirtualPantryApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"VirtualPantry/Preview Content\"";
+				DEVELOPMENT_TEAM = 2M99YW74C7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -445,6 +470,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"VirtualPantry/Preview Content\"";
+				DEVELOPMENT_TEAM = 2M99YW74C7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
