@@ -32,13 +32,13 @@ struct Pantry: View {
             
             Button(action: {showAddItem = true}) {
                Text("ADD")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 220, height: 60)
+                    .background(Color.green)
+                    .cornerRadius(15.0)
             }
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 220, height: 60)
-            .background(Color.green)
-            .cornerRadius(15.0)
         }
         .popover(isPresented: $showAddItem) {
             
@@ -87,13 +87,13 @@ struct Pantry: View {
                 itemUnit = ""
             }) {
                 Text("SAVE")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 220, height: 60)
+                    .background(Color.green)
+                    .cornerRadius(15.0)
             }
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 220, height: 60)
-            .background(Color.green)
-            .cornerRadius(15.0)
             
             Button(action: {
                 showAddItem = false
@@ -102,29 +102,29 @@ struct Pantry: View {
                 itemUnit = ""
             }) {
                 Text("CANCEL")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 220, height: 60)
+                    .background(Color.green)
+                    .cornerRadius(15.0)
             }
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 220, height: 60)
-            .background(Color.green)
-            .cornerRadius(15.0)
         }
     }
     
     struct PantryItemRow: View {
         @State var showEditItem: Bool = false;
         @State var editItemAmount: String = "";
+        @State var editItemName: String = "";
+        @State var editItemUnit: String = "";
+        @State var updateItemAmount: String = "";
         @Binding var items: [Item]
         var item: Item
+        let units = ["qty", "oz", "gal", "lbs"]
 
         var body: some View {
             HStack {
-                if(item.unit != "") {
-                    Text(item.name + " (" + item.unit + ") ")
-                } else {
-                    Text(item.name)
-                }
+                Text(item.name + " (" + item.unit + ") ")
                 
                 Button(action: {showEditItem = true}) {
                     Text(item.quantity.codingKey.stringValue)
@@ -133,9 +133,59 @@ struct Pantry: View {
             }
             .popover(isPresented: $showEditItem) {
                 
-                Text("Update " + item.name + " quantity")
+                Text("Quick Update")
                     .font(.headline)
                     .padding()
+                
+                TextField("amount", text: $updateItemAmount)
+                    .padding()
+                    .background(lightGreyColor)
+                    .cornerRadius(5.0)
+                    .padding([.leading, .bottom, .trailing], 20)
+                    .keyboardType(.decimalPad)
+                
+                Button(action: {
+                    item.quantity = item.quantity + (Int(updateItemAmount) ?? 0)
+                    for i in 0..<items.count {
+                        if items[i].name == item.name {
+                            items.remove(at: i)
+                            items.append(item)
+                        }
+                    }
+                    showEditItem = false
+                    updateItemAmount = ""
+                    editItemAmount = String(item.quantity)
+                }) {
+                    Text("ADD/SUBTRACT")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 220, height: 60)
+                        .background(Color.green)
+                        .cornerRadius(15.0)
+                }
+                
+                Text("Update " + item.name)
+                    .font(.headline)
+                    .padding()
+                
+                TextField("Item Name", text: $editItemName)
+                    .padding()
+                    .background(lightGreyColor)
+                    .cornerRadius(5.0)
+                    .padding([.leading, .bottom, .trailing], 20)
+                
+                Picker("Select a unit", selection: $editItemUnit) {
+                    ForEach(units, id: \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(.menu)
+                .padding()
+                .background(lightGreyColor)
+                .cornerRadius(5.0)
+                .padding([.leading, .bottom, .trailing], 20)
+                
                 TextField("amount", text: $editItemAmount)
                     .padding()
                     .background(lightGreyColor)
@@ -145,6 +195,8 @@ struct Pantry: View {
                 
                 Button(action: {
                     item.quantity = Int(editItemAmount) ?? 0
+                    item.name = editItemName
+                    item.unit = editItemUnit
                     for i in 0..<items.count {
                         if items[i].name == item.name {
                             items.remove(at: i)
@@ -152,15 +204,16 @@ struct Pantry: View {
                         }
                     }
                     showEditItem = false
+                    updateItemAmount = ""
                 }) {
                     Text("SAVE")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 220, height: 60)
+                        .background(Color.green)
+                        .cornerRadius(15.0)
                 }
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(width: 220, height: 60)
-                .background(Color.green)
-                .cornerRadius(15.0)
                 
                 Button(action: {
                     for i in 0..<items.count {
@@ -172,23 +225,30 @@ struct Pantry: View {
                     showEditItem = false
                 }) {
                     Text("REMOVE")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 220, height: 60)
+                        .background(Color.green)
+                        .cornerRadius(15.0)
                 }
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(width: 220, height: 60)
-                .background(Color.green)
-                .cornerRadius(15.0)
                 
-                Button(action: {showEditItem = false}) {
+                Button(action: {
+                    showEditItem = false
+                    updateItemAmount = ""
+                }) {
                     Text("CANCEL")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 220, height: 60)
+                        .background(Color.green)
+                        .cornerRadius(15.0)
                 }
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(width: 220, height: 60)
-                .background(Color.green)
-                .cornerRadius(15.0)
+            }.onAppear {
+                editItemName = item.name
+                editItemUnit = item.unit
+                editItemAmount = String(item.quantity)
             }
         }
     }

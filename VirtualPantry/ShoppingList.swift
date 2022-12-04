@@ -35,24 +35,24 @@ struct ShoppingList: View {
             
             Button(action: {showAddItem = true}) {
                Text("ADD")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 220, height: 60)
+                    .background(Color.green)
+                    .cornerRadius(15.0)
             }
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 220, height: 60)
-            .background(Color.green)
-            .cornerRadius(15.0)
             
             if(shoppingItems.count != 0) {
                 Button(action: {showCompleteShopping = true}) {
                    Text("ADD TO PANTRY")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 220, height: 60)
+                        .background(Color.green)
+                        .cornerRadius(15.0)
                 }
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(width: 220, height: 60)
-                .background(Color.green)
-                .cornerRadius(15.0)
             }
         }
         .popover(isPresented: $showAddItem) {
@@ -183,8 +183,12 @@ struct ShoppingList_Previews: PreviewProvider {
 struct ShoppingItemRow: View {
     @State var showEditItem: Bool = false;
     @State var editItemAmount: String = "";
+    @State var editItemName: String = "";
+    @State var editItemUnit: String = "";
+    @State var updateItemAmount: String = "";
     @Binding var items: [Item]
     var item: Item
+    let units = ["qty", "oz", "gal", "lbs"]
 
     var body: some View {
         HStack {
@@ -200,9 +204,58 @@ struct ShoppingItemRow: View {
         }
         .popover(isPresented: $showEditItem) {
             
-            Text("Update " + item.name + " quantity")
+            Text("Quick Update")
                 .font(.headline)
                 .padding()
+            
+            TextField("amount", text: $updateItemAmount)
+                .padding()
+                .background(lightGreyColor)
+                .cornerRadius(5.0)
+                .padding([.leading, .bottom, .trailing], 20)
+                .keyboardType(.decimalPad)
+            
+            Button(action: {
+                item.quantity = item.quantity + (Int(updateItemAmount) ?? 0)
+                for i in 0..<items.count {
+                    if items[i].name == item.name {
+                        items.remove(at: i)
+                        items.append(item)
+                    }
+                }
+                showEditItem = false
+                updateItemAmount = ""
+                editItemAmount = String(item.quantity)
+            }) {
+                Text("ADD/SUBTRACT")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 220, height: 60)
+                    .background(Color.green)
+                    .cornerRadius(15.0)
+            }
+            
+            Text("Update " + item.name)
+                .font(.headline)
+                .padding()
+            
+            TextField("Item Name", text: $editItemName)
+                .padding()
+                .background(lightGreyColor)
+                .cornerRadius(5.0)
+                .padding([.leading, .bottom, .trailing], 20)
+            
+            Picker("Select a unit", selection: $editItemUnit) {
+                ForEach(units, id: \.self) {
+                    Text($0)
+                }
+            }
+            .pickerStyle(.menu)
+            .padding()
+            .background(lightGreyColor)
+            .cornerRadius(5.0)
+            .padding([.leading, .bottom, .trailing], 20)
             
             TextField("amount", text: $editItemAmount)
                 .padding()
@@ -220,6 +273,7 @@ struct ShoppingItemRow: View {
                     }
                 }
                 showEditItem = false
+                updateItemAmount = ""
             }) {
                 Text("SAVE")
             }
@@ -248,7 +302,10 @@ struct ShoppingItemRow: View {
             .background(Color.green)
             .cornerRadius(15.0)
             
-            Button(action: {showEditItem = false}) {
+            Button(action: {
+                showEditItem = false
+                updateItemAmount = ""
+            }) {
                 Text("CANCEL")
             }
             .font(.headline)
@@ -257,6 +314,10 @@ struct ShoppingItemRow: View {
             .frame(width: 220, height: 60)
             .background(Color.green)
             .cornerRadius(15.0)
+        }.onAppear {
+            editItemName = item.name
+            editItemUnit = item.unit
+            editItemAmount = String(item.quantity)
         }
     }
 }

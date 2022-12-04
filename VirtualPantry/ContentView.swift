@@ -9,8 +9,8 @@ import SwiftUI
 
 var item1: Item = Item(name: "Beans", quantity: 2, unit: "oz")
 var item2: Item = Item(name: "Beef", quantity: 1, unit: "lbs")
-var item3: Item = Item(name: "Apple", quantity: 1, unit: "")
-var item4: Item = Item(name: "Onion", quantity: 1, unit: "")
+var item3: Item = Item(name: "Apple", quantity: 1, unit: "qty")
+var item4: Item = Item(name: "Onion", quantity: 1, unit: "qty")
 var item5: Item = Item(name: "Milk", quantity: 1, unit: "gal")
 var item6: Item = Item(name: "Spaghetti", quantity: 15, unit: "oz")
 var item7: Item = Item(name: "Tomato Sauce", quantity: 16, unit: "oz")
