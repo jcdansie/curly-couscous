@@ -117,13 +117,14 @@ struct ShoppingList: View {
                 itemUnit = ""
             }) {
                 Text("CANCEL")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 220, height: 60)
+                    .background(Color.green)
+                    .cornerRadius(15.0)
             }
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 220, height: 60)
-            .background(Color.green)
-            .cornerRadius(15.0)
+
         }
         .popover(isPresented: $showCompleteShopping) {
             
@@ -149,23 +150,24 @@ struct ShoppingList: View {
                 showCompleteShopping = false
             }) {
                 Text("COMPLETE")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 220, height: 60)
+                    .background(Color.green)
+                    .cornerRadius(15.0)
             }
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 220, height: 60)
-            .background(Color.green)
-            .cornerRadius(15.0)
             
             Button(action: {showCompleteShopping = false}) {
                 Text("CANCEL")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 220, height: 60)
+                    .background(Color.green)
+                    .cornerRadius(15.0)
             }
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 220, height: 60)
-            .background(Color.green)
-            .cornerRadius(15.0)
+
         }
     }
 }
@@ -276,13 +278,13 @@ struct ShoppingItemRow: View {
                 updateItemAmount = ""
             }) {
                 Text("SAVE")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 220, height: 60)
+                    .background(Color.green)
+                    .cornerRadius(15.0)
             }
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 220, height: 60)
-            .background(Color.green)
-            .cornerRadius(15.0)
             
             Button(action: {
                 for i in 0..<items.count {
@@ -294,26 +296,14 @@ struct ShoppingItemRow: View {
                 showEditItem = false
             }) {
                 Text("REMOVE")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 220, height: 60)
+                    .background(Color.green)
+                    .cornerRadius(15.0)
             }
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 220, height: 60)
-            .background(Color.green)
-            .cornerRadius(15.0)
             
-            Button(action: {
-                showEditItem = false
-                updateItemAmount = ""
-            }) {
-                Text("CANCEL")
-            }
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 220, height: 60)
-            .background(Color.green)
-            .cornerRadius(15.0)
         }.onAppear {
             editItemName = item.name
             editItemUnit = item.unit

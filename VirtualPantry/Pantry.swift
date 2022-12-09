@@ -233,18 +233,18 @@ struct Pantry: View {
                         .cornerRadius(15.0)
                 }
                 
-                Button(action: {
-                    showEditItem = false
-                    updateItemAmount = ""
-                }) {
-                    Text("CANCEL")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(width: 220, height: 60)
-                        .background(Color.green)
-                        .cornerRadius(15.0)
-                }
+//                Button(action: {
+//                    showEditItem = false
+//                    updateItemAmount = ""
+//                }) {
+//                    Text("CANCEL")
+//                        .font(.headline)
+//                        .foregroundColor(.white)
+//                        .padding()
+//                        .frame(width: 220, height: 60)
+//                        .background(Color.green)
+//                        .cornerRadius(15.0)
+//                }
             }.onAppear {
                 editItemName = item.name
                 editItemUnit = item.unit

@@ -61,13 +61,13 @@ struct RecipeView: View {
             showUseRecipe = true
         }) {
             Text("USE INGREDIENTS")
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding()
+                .frame(width: 220, height: 60)
+                .background(Color.green)
+                .cornerRadius(15.0)
         }
-        .font(.headline)
-        .foregroundColor(.white)
-        .padding()
-        .frame(width: 220, height: 60)
-        .background(Color.green)
-        .cornerRadius(15.0)
         .popover(isPresented: $showUseRecipe) {
             
             Text("Are you sure you want to use this recipe? All ingredients will be removed from your pantry.")
